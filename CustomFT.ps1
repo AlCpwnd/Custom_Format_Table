@@ -1,8 +1,8 @@
 function Format-CustomTable{
     Param(
-        [Array]$Data,
-        [scriptblock]$Condition,
-        [ConsoleColor]$Highlight
+        [Parameter(Mandatory,ValueFromPipeline)][Array]$Data,
+        [Parameter(Mandatory)][scriptblock]$Condition,
+        [Parameter(Mandatory)][ConsoleColor]$Highlight
     )
     $Header = ($Data[0] | Format-Table | Out-String -Stream).split([Environment]::NewLine)[0..2]
     Write-Host -Object "`n$Header"
